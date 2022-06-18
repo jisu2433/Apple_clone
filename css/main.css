@@ -5,7 +5,7 @@ html {
   font-size: 14px;
 }
 body{
-  overflow: scroll;
+  overflow-x: hidden;
   color: rgb(29, 29, 31);
   letter-spacing: -0.05em;
   background: white;
@@ -76,7 +76,7 @@ a{
   top: 35vh;
   margin: 5px 0;
   height: 3em;
-  font-size: 2rem;
+  font-size: 2.5rem;
   opacity: 0;
 }
 .main-message p {
@@ -84,21 +84,25 @@ a{
   text-align: center;
   line-height: 1.2;
 }
+#scroll-section-2 .main-message {
+	font-size: 3.5rem;
+}
 .description{
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
   font-size: 1.2rem;
-  text-align: center;
   color: #888;
 }
 .description strong {
-  font-size: 2rem;
-  color: rgb(29, 29, 31);
+  float: left;
+	margin-right: 0.2em;
+	font-size: 3rem;
+	color: rgb(29, 29, 31);
 } 
-.desc-message {
-  width: 50%;
-  font-weight: normal;
+.sticky-elem.desc-message {
+  width: 45%;
+  font-weight: bold;
   opacity: 0;
 }
 .pin{
@@ -124,7 +128,7 @@ a{
 
 .canvas-caption {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: -24rem auto 0;
   padding: 0 1rem;
   font-size: 1.2rem;
   color: #888;
@@ -159,6 +163,11 @@ a{
   position: absolute;
   top: 50%;
   left: 50%;
+}
+#scroll-section-3 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 @media (min-width: 1024px) {

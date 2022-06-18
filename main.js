@@ -126,7 +126,7 @@
       if (sceneInfo[i].type === 'sticky') {
         sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * innerHeight;
       } else if (sceneInfo[i].type === 'normal') {
-        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight + window.innerHeight * 0.5;
       }
       sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
@@ -232,7 +232,6 @@
 				console.log('2 play');
 				let sequence2 = Math.round(calcValues(values.imageSequence, currentYOffset));
 			  objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
-				objs.canvas.style.opacity = calcValues(values.canvas_opacity, currentYOffset);
 
 				if (scrollRatio <= 0.5) {
 					// in
