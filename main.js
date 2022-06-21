@@ -374,7 +374,7 @@
 				objs.context.drawImage(objs.images[0], 0, 0);
 
 				// 캔버스 사이즈에 맞춰 가정한 innerWidth와 innerHeight
-				const recalculatedInnerWidth = document.body.offsetWidth / canvasScaleRatio;
+				const recalculatedInnerWidth = window.innerWidth / canvasScaleRatio;
 				const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
 
 				if (!values.rectStartY) {
@@ -435,7 +435,7 @@
 					}
 
 					if (scrollRatio > values.canvas_scale[2].end
-						&& values.canvas_scale[2].end > 2) {
+						&& values.canvas_scale[2].end > 0) {
 						objs.canvas.classList.remove('sticky');
 						objs.canvas.style.marginTop = `${scrollHeight * 0.4}px`;
 
@@ -444,7 +444,7 @@
 						values.canvasCaption_translateY[2].start = values.canvasCaption_opacity[2].start;
 						values.canvasCaption_translateY[2].end = values.canvasCaption_opacity[2].end;
 						objs.canvasCaption.style.opacity = calcValues(values.canvasCaption_opacity, currentYOffset);
-						objs.canvasCaption.style.transform = `translate3d(0, ${calcValues(values.canvasCaption_opacity, currentYOffset)}%, 0)`
+						objs.canvasCaption.style.transform = `translate3d(0, ${calcValues(values.canvasCaption_translateY, currentYOffset)}%, 0)`;
 					} else {
 						objs.canvasCaption.style.opacity = values.canvasCaption_opacity[0];
 					}
@@ -514,6 +514,7 @@
 		}
 	});
 	window.addEventListener('load', () => {
+		document.body.classList.remove('before-load');
 		setLayout();
 		sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
 	});
@@ -524,7 +525,9 @@
 		sceneInfo[3].values.rectStartY = 0;
 	});
 	window.addEventListener('orientationchange', setLayout);
-
+	document.querySelector('.loading').addEventListener('transitionend', (e) => {
+		document.body.removeChild(e.currentTarget);
+	})
 		setCanvasImages();
   }
 )();
