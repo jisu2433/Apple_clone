@@ -260,10 +260,6 @@
 				break;
 
 			case 2:
-				// console.log('2 play');
-				// let sequence2 = Math.round(calcValues(values.imageSequence, currentYOffset));
-				// objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
-
 				if (scrollRatio <= 0.5) {
 					// in
 					objs.canvas.style.opacity = calcValues(values.canvas_opacity_in, currentYOffset);
@@ -272,7 +268,7 @@
 					objs.canvas.style.opacity = calcValues(values.canvas_opacity_out, currentYOffset);
 				}
 
-				if (scrollRatio <= 0.25) {
+				if (scrollRatio <= 0.32) {
 					// in
 					objs.messageA.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
 					objs.messageA.style.transform = `translate3d(0, ${calcValues(values.messageA_translateY_in, currentYOffset)}%, 0)`;
@@ -282,7 +278,7 @@
 					objs.messageA.style.transform = `translate3d(0, ${calcValues(values.messageA_translateY_out, currentYOffset)}%, 0)`;
 				}
 
-				if (scrollRatio <= 0.57) {
+				if (scrollRatio <= 0.67) {
 					// in
 					objs.messageB.style.transform = `translate3d(0, ${calcValues(values.messageB_translateY_in, currentYOffset)}%, 0)`;
 					objs.messageB.style.opacity = calcValues(values.messageB_opacity_in, currentYOffset);
@@ -294,7 +290,7 @@
 					objs.pinB.style.transform = `scaleY(${calcValues(values.pinB_scaleY, currentYOffset)})`;
 				}
 
-				if (scrollRatio <= 0.83) {
+				if (scrollRatio <= 0.93) {
 					// in
 					objs.messageC.style.transform = `translate3d(0, ${calcValues(values.messageC_translateY_in, currentYOffset)}%, 0)`;
 					objs.messageC.style.opacity = calcValues(values.messageC_opacity_in, currentYOffset);
@@ -330,6 +326,7 @@
 					const recalculatedInnerWidth = document.body.offsetWidth / canvasScaleRatio;
 					const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
 
+					console.log(recalculatedInnerWidth, recalculatedInnerHeight)
 					const whiteRectWidth = recalculatedInnerWidth * 0.15;
 					values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
 					values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
@@ -360,6 +357,7 @@
 				const widthRatio = window.innerWidth / objs.canvas.width;
 				const heightRatio = window.innerHeight / objs.canvas.height;
 				let canvasScaleRatio;
+				console.log(widthRatio, heightRatio)
 
 				if (widthRatio <= heightRatio) {
 					// 캔버스보다 브라우저 창이 홀쭉한 경우
